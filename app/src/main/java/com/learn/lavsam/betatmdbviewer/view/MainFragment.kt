@@ -6,7 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
+import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.data.MovieDetail
+import com.learn.lavsam.betatmdbviewer.databinding.MainFragmentBinding
+import com.learn.lavsam.betatmdbviewer.viewmodel.AppState
 import com.learn.lavsam.betatmdbviewer.viewmodel.MainViewModel
 
 private const val FIRST_PAGE = 1
@@ -32,7 +36,7 @@ class MainFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+//        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -42,8 +46,38 @@ class MainFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        adapter.removeListener()
         _binding = null
         super.onDestroy()
+    }
+
+    private val adapter = MainFragmentAdapter()
+
+    private fun renderData(appState: AppState) {
+        when (appState) {
+            is AppState.Success -> {
+                binding.loadingLayout.visibility = View.GONE
+                adapter.setMovie(appState.movieData)
+            }
+            is AppState.Loading -> {
+                binding.loadingLayout.visibility = View.VISIBLE
+            }
+            is AppState.Error -> {
+                binding.loadingLayout.visibility = View.GONE
+                binding.main.showSnackBar(getString(R.string.error_appstate),
+                    getString(R.string.reload_appstate),
+                    { viewModel.getMoviesListFromServer(1) })
+            }
+        }
+    }
+
+    fun View.showSnackBar(
+        text: String,
+        actionText: String,
+        action: (View) -> Unit,
+        length: Int = Snackbar.LENGTH_INDEFINITE
+    ) {
+        Snackbar.make(this, text, length)
+            .setAction(actionText, action)
+            .show()
     }
 }

@@ -1,4 +1,4 @@
-package com.learn.lavsam.betatmdbviewer
+package com.learn.lavsam.betatmdbviewer.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
