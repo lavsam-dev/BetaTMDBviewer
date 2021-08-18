@@ -3,7 +3,7 @@
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="year_of_release">Year of release</string>
-    <string name="genre">Genre</string>
+    <string name="genre">Action, Science Fiction, Adventure</string>
     <string name="favourite_text">Favourite Movie</string>
     <string name="rated_text">High Rated Movies</string>
     <string name="detailed_text">Detailed Movie fragment</string>
