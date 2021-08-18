@@ -1,6 +1,7 @@
 package com.learn.lavsam.betatmdbviewer.viewmodel
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.data.MovieList
 import com.learn.lavsam.betatmdbviewer.repository.RemoteDataSource
@@ -13,9 +14,8 @@ private const val SERVER_ERROR = "Ошибка сервера"
 private const val REQUEST_ERROR = "Ошибка запроса на сервер"
 private const val CORRUPTED_DATA = "Неполные данные"
 
-class MainViewModel {
+class MainViewModel() : ViewModel() {
     val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
-    private val timer: Long = 1000
     private val repositoryImpl: RepositoryImpl =
         RepositoryImpl(RemoteDataSource())
     private val movieList: MutableList<MovieDetail> = mutableListOf()
