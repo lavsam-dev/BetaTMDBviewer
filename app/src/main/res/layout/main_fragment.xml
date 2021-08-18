@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/gray_back"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -9,6 +10,8 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/margin_40_dp"
+        android:layout_marginEnd="@dimen/margin_40_dp"
         tools:context=".view.MainFragment">
 
         <androidx.recyclerview.widget.RecyclerView
