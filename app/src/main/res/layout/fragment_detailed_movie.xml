@@ -17,7 +17,7 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewBackgroundPoster"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="@dimen/height_250"
             android:scaleType="centerCrop"
             android:adjustViewBounds="true"
             app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:text="@string/title"
             android:textAlignment="textStart"
-            android:textSize="@dimen/text_size"
+            android:textSize="0dp"
             android:textStyle="bold"
             app:layout_constraintTop_toBottomOf="@id/imageViewBackgroundPoster"
             app:layout_constraintStart_toStartOf="parent" />
@@ -62,10 +62,10 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewPoster"
-            android:layout_width="250dp"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginStart="@dimen/margin_8_dp"
+            android:layout_marginTop="@dimen/margin_start_12"
             android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:src="@drawable/poster_background"
@@ -75,9 +75,9 @@
 
         <TextView
             android:id="@+id/textViewYearOfReleaseLabel"
-            android:layout_width="150dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="40dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_4_dp"
             android:text="@string/release_date_label"
             android:textSize="@dimen/text_size_detailed_info"
             app:layout_constraintStart_toEndOf="@id/imageViewPoster"
@@ -85,9 +85,9 @@
 
         <TextView
             android:id="@+id/textViewYearOfRelease"
-            android:layout_width="150dp"
-            android:layout_height="41dp"
-            android:layout_marginEnd="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_4_dp"
             android:text="@string/year_of_release"
             android:textAlignment="textStart"
             android:textSize="@dimen/text_size_detailed_info"
@@ -97,6 +97,63 @@
             app:layout_constraintTop_toTopOf="@id/textViewYearOfReleaseLabel"
             tools:ignore="MissingConstraints" />
 
+        <TextView
+            android:id="@+id/textViewGenreLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8_dp"
+            android:text="@string/genre_label"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_size_detailed_info"
+            app:layout_constraintStart_toStartOf="@+id/textViewYearOfReleaseLabel"
+            app:layout_constraintTop_toBottomOf="@+id/textViewYearOfReleaseLabel" />
+
+        <TextView
+            android:id="@+id/textViewGenre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8_dp"
+            android:text="@string/genre"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_size_detailed_info"
+            app:layout_constraintStart_toStartOf="@+id/textViewYearOfRelease"
+            app:layout_constraintTop_toTopOf="@+id/textViewGenreLabel"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/textViewRuntimeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8_dp"
+            android:text="@string/runtime_label"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_size_detailed_info"
+            app:layout_constraintStart_toStartOf="@+id/textViewGenreLabel"
+            app:layout_constraintTop_toBottomOf="@+id/textViewGenreLabel" />
+
+        <TextView
+            android:id="@+id/textViewRuntime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8_dp"
+            android:text="@string/runtime"
+            android:textAlignment="textStart"
+            android:textSize="@dimen/text_size_detailed_info"
+            app:layout_constraintStart_toStartOf="@+id/textViewGenre"
+            app:layout_constraintTop_toTopOf="@+id/textViewRuntimeLabel" />
+
+        <TextView
+            android:id="@+id/textViewPopularityLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/margin_4_dp"
+            android:text="@string/popularity_label"
+            android:layout_marginTop="@dimen/margin_8_dp"
+            android:textAlignment="viewStart"
+            android:textSize="@dimen/text_size_detailed_info"
+            app:layout_constraintBottom_toBottomOf="@+id/ImageViewPopularity"
+            app:layout_constraintStart_toStartOf="@+id/textViewRuntimeLabel"
+            app:layout_constraintTop_toBottomOf="@+id/textViewRuntimeLabel" />
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ImageViewPopularity"
@@ -109,70 +166,10 @@
             app:layout_constraintTop_toTopOf="@+id/textViewPopularity" />
 
         <TextView
-            android:id="@+id/textViewRuntimeLabel"
-            android:layout_width="150dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/runtime_label"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintBottom_toBottomOf="@+id/textViewRuntime"
-            app:layout_constraintStart_toStartOf="@+id/textViewGenreLabel"
-            app:layout_constraintTop_toBottomOf="@+id/textViewGenreLabel" />
-
-        <TextView
-            android:id="@+id/textViewRuntime"
-            android:layout_width="150dp"
-            android:layout_height="43dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/runtime"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintStart_toStartOf="@+id/textViewGenre"
-            app:layout_constraintTop_toBottomOf="@+id/textViewGenre" />
-
-        <TextView
-            android:id="@+id/textViewGenreLabel"
-            android:layout_width="150dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/genre_label"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintBottom_toTopOf="@+id/textViewRuntime"
-            app:layout_constraintStart_toStartOf="@+id/textViewYearOfReleaseLabel"
-            app:layout_constraintTop_toBottomOf="@+id/textViewYearOfReleaseLabel" />
-
-        <TextView
-            android:id="@+id/textViewGenre"
-            android:layout_width="150dp"
-            android:layout_height="37dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/genre"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintStart_toStartOf="@+id/textViewYearOfRelease"
-            app:layout_constraintTop_toBottomOf="@+id/textViewYearOfRelease"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/textViewPopularityLabel"
-            android:layout_width="150dp"
-            android:layout_height="50dp"
-            android:paddingTop="@dimen/margin_4_dp"
-            android:text="@string/popularity_label"
-            android:layout_marginTop="8dp"
-            android:textAlignment="viewStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintBottom_toBottomOf="@+id/ImageViewPopularity"
-            app:layout_constraintStart_toStartOf="@+id/textViewRuntimeLabel"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRuntimeLabel" />
-
-        <TextView
             android:id="@+id/textViewPopularity"
-            android:layout_width="81dp"
-            android:layout_height="59dp"
-            android:layout_marginTop="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_8_dp"
             android:paddingTop="@dimen/margin_4_dp"
             android:text="@string/popularity"
             android:textAlignment="viewStart"

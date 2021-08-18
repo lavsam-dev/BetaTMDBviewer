@@ -16,9 +16,6 @@ import com.learn.lavsam.betatmdbviewer.viewmodel.AppState
 import com.learn.lavsam.betatmdbviewer.viewmodel.DetailsMovieViewModel
 import com.squareup.picasso.Picasso
 
-private const val API_KEY = "3d4eed70b3bf0c001506c22b79833ff1"
-private const val LANGUAGE = "en-US"
-private const val MAIN_LINK = "https://api.themoviedb.org/3/movie/"
 private const val FILE_SIZE = "w500"
 private const val BASE_URL = "https://image.tmdb.org/t/p/"
 
@@ -105,9 +102,5 @@ class DetailedMovieFragment : Fragment() {
             .get()
             .load(BASE_URL + FILE_SIZE + movie.backdrop_path)
             .into(binding.imageViewBackgroundPoster)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
     }
 }

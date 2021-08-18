@@ -14,4 +14,5 @@
     <dimen name="margin_top_20">20dp</dimen>
     <dimen name="corner_radius_20">20dp</dimen>
     <dimen name="card_elevation_8">8dp</dimen>
+    <dimen name="height_250">250dp</dimen>
 </resources>

@@ -37,6 +37,8 @@ android {
         properties.load(project.rootProject.file("tmdb.properties").newDataInputStream())
         def apiKey = properties.getProperty("tmdb_api_key", "")
         it.buildConfigField "String", "TMDB_API_KEY", apiKey
+        def serverError = properties.getProperty("server_error_message", "")
+        it.buildConfigField "String", "SERVER_ERROR", serverError
     }
     kotlinOptions {
         jvmTarget = '1.8'

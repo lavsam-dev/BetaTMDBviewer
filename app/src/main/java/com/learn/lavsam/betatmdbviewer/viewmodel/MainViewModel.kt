@@ -18,7 +18,6 @@ class MainViewModel() : ViewModel() {
     val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()
     private val repositoryImpl: RepositoryImpl =
         RepositoryImpl(RemoteDataSource())
-    private val movieList: MutableList<MovieDetail> = mutableListOf()
 
     fun getMoviesListFromServer(page: Int) {
         liveDataToObserve.value = AppState.Loading
