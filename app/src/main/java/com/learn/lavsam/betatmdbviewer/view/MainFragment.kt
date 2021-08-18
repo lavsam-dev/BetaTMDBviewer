@@ -1,12 +1,11 @@
 package com.learn.lavsam.betatmdbviewer.view
 
+import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.snackbar.Snackbar
 import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.databinding.MainFragmentBinding
@@ -24,9 +23,21 @@ class MainFragment : Fragment() {
     private lateinit var viewModel: MainViewModel
     private var _binding: MainFragmentBinding? = null
     private val binding get() = _binding!!
-    private lateinit var movieBundle: MovieDetail
 
-     override fun onCreateView(
+    private val adapter = MainFragmentAdapter(object : OnItemViewClickListener {
+        override fun onItemViewClick(movie: MovieDetail) {
+            activity?.supportFragmentManager?.apply {
+                beginTransaction()
+                    .replace(R.id.container, DetailedMovieFragment.newInstance(Bundle().apply {
+                        putParcelable(DetailedMovieFragment.BUNDLE_EXTRA, movie)
+                    }))
+                    .addToBackStack("")
+                    .commitAllowingStateLoss()
+            }
+        }
+    })
+
+    override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
@@ -44,13 +55,6 @@ class MainFragment : Fragment() {
         viewModel.liveDataToObserve.observe(viewLifecycleOwner) { renderData(it) }
         viewModel.getMoviesListFromServer(FIRST_PAGE)
     }
-
-    override fun onDestroy() {
-        _binding = null
-        super.onDestroy()
-    }
-
-    private val adapter = MainFragmentAdapter()
 
     private fun renderData(appState: AppState) {
         when (appState) {
@@ -70,14 +74,13 @@ class MainFragment : Fragment() {
         }
     }
 
-    fun View.showSnackBar(
-        text: String,
-        actionText: String,
-        action: (View) -> Unit,
-        length: Int = Snackbar.LENGTH_INDEFINITE
-    ) {
-        Snackbar.make(this, text, length)
-            .setAction(actionText, action)
-            .show()
+    override fun onDestroy() {
+        adapter.removeListener()
+        _binding = null
+        super.onDestroy()
+    }
+
+    interface OnItemViewClickListener {
+        fun onItemViewClick(movie: MovieDetail)
     }
 }

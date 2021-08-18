@@ -10,10 +10,14 @@ import com.squareup.picasso.Picasso
 
 private const val BASE_URL = "https://image.tmdb.org/t/p/w500/"
 
-class MainFragmentAdapter() :
+class MainFragmentAdapter(private var onItemViewClickListener: MainFragment.OnItemViewClickListener?) :
     RecyclerView.Adapter<MainFragmentAdapter.MainViewHolder>() {
 
     private var movieData: List<MovieDetail> = listOf()
+
+    fun removeListener() {
+        onItemViewClickListener = null
+    }
 
     fun setMovie(data: List<MovieDetail>) {
         movieData = data
@@ -52,7 +56,7 @@ class MainFragmentAdapter() :
                 .get()
                 .load(BASE_URL + movie.poster_path)
                 .into(imageViewPoster)
-            root
+            root.setOnClickListener { onItemViewClickListener?.onItemViewClick(movie) }
         }
     }
 }

@@ -1,10 +1,9 @@
 package com.learn.lavsam.betatmdbviewer.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.databinding.MainActivityBinding
-import com.learn.lavsam.betatmdbviewer.view.MainFragment
 
 class MainActivity : AppCompatActivity() {
 

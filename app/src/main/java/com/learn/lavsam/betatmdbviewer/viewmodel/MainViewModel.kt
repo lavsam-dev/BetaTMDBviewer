@@ -43,11 +43,11 @@ class MainViewModel() : ViewModel() {
     }
 
     private fun checkResponse(serverResponse: MovieList): AppState {
-        val fact = serverResponse.results
-        return if (fact.isEmpty()) {
+        val movie = serverResponse.results
+        return if (movie.isNullOrEmpty()) {
             AppState.Error(Throwable(CORRUPTED_DATA))
         } else {
-            AppState.Success(fact)
+            AppState.Success(movie)
         }
     }
 }
