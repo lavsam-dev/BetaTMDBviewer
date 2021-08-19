@@ -9,8 +9,8 @@ import retrofit2.Callback
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val LANGUAGE = "en-US"
-private const val MAIN_URL = "https://api.themoviedb.org/"
+private const val LANGUAGE = BuildConfig.LANGUAGE_CONST
+private const val MAIN_URL = BuildConfig.MAIN_URL_CONST
 private const val TMDB_API_KEY = BuildConfig.TMDB_API_KEY
 
 class RemoteDataSource {

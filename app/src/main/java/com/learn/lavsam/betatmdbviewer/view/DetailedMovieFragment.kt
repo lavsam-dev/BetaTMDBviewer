@@ -9,17 +9,16 @@ import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.learn.lavsam.betatmdbviewer.BuildConfig
 import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.databinding.FragmentDetailedMovieBinding
 import com.learn.lavsam.betatmdbviewer.viewmodel.AppState
 import com.learn.lavsam.betatmdbviewer.viewmodel.DetailsMovieViewModel
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_detailed_movie.*
-import kotlinx.android.synthetic.main.main_fragment_recycler_item.*
 
-private const val FILE_SIZE = "w500"
-private const val BASE_URL = "https://image.tmdb.org/t/p/"
+private const val IMAGE_SIZE = BuildConfig.IMAGE_SIZE_CONST
+private const val BASE_URL = BuildConfig.BASE_URL_CONST
 
 
 class DetailedMovieFragment : Fragment() {
@@ -90,18 +89,20 @@ class DetailedMovieFragment : Fragment() {
         with(binding) {
             textViewTitle.text = movie.title
             textViewPlot.text = movie.overview
-            textViewReleased.text = "Released: " + movie.release_date.toString()
-            textViewRating.text = "Rating: " + movie.vote_average.toString()
-            textViewRuntime.text = "Runtime: " + movie.runtime.toString() + " min"
+            textViewReleased.text = getString(R.string.released) + movie.release_date.toString()
+            textViewRating.text = getString(R.string.rating) + movie.vote_average.toString()
+            textViewRuntime.text = getString(R.string.runtimelabel) + movie.runtime.toString() + " min"
+            textViewType.text = getString(R.string.typeMovie)
+            textViewYear.text = movie.release_date?.substring(0, 4) ?: ""
         }
         Picasso
             .get()
-            .load(BASE_URL + FILE_SIZE + movie.poster_path)
+            .load(BASE_URL + IMAGE_SIZE + movie.poster_path)
             .into(binding.imageViewPoster)
 
         Picasso
             .get()
-            .load(BASE_URL + FILE_SIZE + movie.backdrop_path)
+            .load(BASE_URL + IMAGE_SIZE + movie.backdrop_path)
             .into(binding.imageViewBackgroundPoster)
     }
 }

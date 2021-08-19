@@ -19,4 +19,8 @@
     <string name="runtime_label">Runtime: </string>
     <string name="genre_label">Genre: </string>
     <string name="popularity_label">Popularity:</string>
+    <string name="released">Released: </string>
+    <string name="rating">Rating: </string>
+    <string name="runtimelabel">Runtime: </string>
+    <string name="typeMovie">Movie</string>
 </resources>

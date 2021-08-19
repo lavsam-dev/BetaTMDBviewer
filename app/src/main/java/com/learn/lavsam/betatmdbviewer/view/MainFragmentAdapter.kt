@@ -3,12 +3,13 @@ package com.learn.lavsam.betatmdbviewer.view
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.learn.lavsam.betatmdbviewer.BuildConfig
 import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.databinding.MainFragmentRecyclerItemBinding
 import com.squareup.picasso.Picasso
 
-private const val BASE_URL = "https://image.tmdb.org/t/p/w500/"
+private const val BASE_URL = BuildConfig.BASE_URL_CONST + BuildConfig.IMAGE_SIZE_CONST + "/"
 
 class MainFragmentAdapter(private var onItemViewClickListener: MainFragment.OnItemViewClickListener?) :
     RecyclerView.Adapter<MainFragmentAdapter.MainViewHolder>() {

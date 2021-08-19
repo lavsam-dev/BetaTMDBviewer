@@ -2,6 +2,7 @@ package com.learn.lavsam.betatmdbviewer.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.learn.lavsam.betatmdbviewer.BuildConfig
 import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.dto.MovieDetailDTO
 import com.learn.lavsam.betatmdbviewer.repository.DetailsMovieRepository
@@ -12,9 +13,9 @@ import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
 
-private const val SERVER_ERROR = "Ошибка сервера"
-private const val REQUEST_ERROR = "Ошибка запроса на сервер"
-private const val CORRUPTED_DATA = "Неполные данные"
+private const val SERVER_ERROR = BuildConfig.SERVER_ERROR_MESSAGE
+private const val REQUEST_ERROR = BuildConfig.REQUEST_ERROR_MESSAGE
+private const val CORRUPTED_DATA = BuildConfig.CORRUPTED_DATA_MESSAGE
 
 class DetailsMovieViewModel(
     val detailsLiveData: MutableLiveData<AppState> = MutableLiveData(),
