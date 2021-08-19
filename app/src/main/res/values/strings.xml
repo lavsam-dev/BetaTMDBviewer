@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">BetaTMDBviewer</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="year_of_release">2020-05-06</string>
+    <string name="genre">Action, Science Fiction, Adventure</string>
+    <string name="favourite_text">Favourite Movie</string>
+    <string name="rated_text">High Rated Movies</string>
+    <string name="detailed_text">Detailed Movie fragment</string>
+    <string name="action_home">Main</string>
+    <string name="action_favourite">Favourite</string>
+    <string name="action_rated">High Rated</string>
+    <string name="error_appstate">Error</string>
+    <string name="reload_appstate">Reload</string>
+    <string name="popularity">8.1</string>
+    <string name="runtime">120</string>
+    <string name="originalTitle">Original Title</string>
+    <string name="release_date_label">Date: </string>
+    <string name="runtime_label">Runtime: </string>
+    <string name="genre_label">Genre: </string>
+    <string name="popularity_label">Popularity:</string>
+    <string name="released">Released: </string>
+    <string name="rating">Rating: </string>
+    <string name="runtimelabel">Runtime: </string>
+    <string name="typeMovie">Movie</string>
 </resources>

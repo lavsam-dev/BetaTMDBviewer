@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
 }
 
 android {
@@ -36,6 +37,22 @@ android {
         properties.load(project.rootProject.file("tmdb.properties").newDataInputStream())
         def apiKey = properties.getProperty("tmdb_api_key", "")
         it.buildConfigField "String", "TMDB_API_KEY", apiKey
+        def serverErrorMessage = properties.getProperty("server_error_message", "")
+        it.buildConfigField "String", "SERVER_ERROR_MESSAGE", serverErrorMessage
+        def requestErrorMessage = properties.getProperty("request_error_message", "")
+        it.buildConfigField "String", "REQUEST_ERROR_MESSAGE", requestErrorMessage
+        def corruptedDataMessage = properties.getProperty("corrupted_data_message", "")
+        it.buildConfigField "String", "CORRUPTED_DATA_MESSAGE", corruptedDataMessage
+
+        def mainUrlConst = properties.getProperty("main_url_const", "")
+        it.buildConfigField "String", "MAIN_URL_CONST", mainUrlConst
+        def languageСonst = properties.getProperty("language_const", "")
+        it.buildConfigField "String", "LANGUAGE_CONST", languageСonst
+
+        def baseUrlConst = properties.getProperty("base_url_const", "")
+        it.buildConfigField "String", "BASE_URL_CONST", baseUrlConst
+        def imageSizeConst = properties.getProperty("image_size_const", "")
+        it.buildConfigField "String", "IMAGE_SIZE_CONST", imageSizeConst
     }
     kotlinOptions {
         jvmTarget = '1.8'
