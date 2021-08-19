@@ -15,6 +15,8 @@ import com.learn.lavsam.betatmdbviewer.databinding.FragmentDetailedMovieBinding
 import com.learn.lavsam.betatmdbviewer.viewmodel.AppState
 import com.learn.lavsam.betatmdbviewer.viewmodel.DetailsMovieViewModel
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_detailed_movie.*
+import kotlinx.android.synthetic.main.main_fragment_recycler_item.*
 
 private const val FILE_SIZE = "w500"
 private const val BASE_URL = "https://image.tmdb.org/t/p/"
@@ -86,12 +88,11 @@ class DetailedMovieFragment : Fragment() {
     private fun setMovie(movie: MovieDetail) {
         val id = movieBundle.id
         with(binding) {
-            textViewOriginalTitle.text = movie.title.toString()
-            textViewDescription.text = movie.overview
             textViewTitle.text = movie.title
-            textViewYearOfRelease.text = movie.release_date.toString()
-            textViewPopularity.text = movie.vote_average.toString()
-            textViewRuntime.text = movie.runtime.toString()
+            textViewPlot.text = movie.overview
+            textViewReleased.text = "Released: " + movie.release_date.toString()
+            textViewRating.text = "Rating: " + movie.vote_average.toString()
+            textViewRuntime.text = "Runtime: " + movie.runtime.toString() + " min"
         }
         Picasso
             .get()

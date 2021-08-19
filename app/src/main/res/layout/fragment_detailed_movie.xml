@@ -1,181 +1,175 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/scroll_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/gray_back_light"
     tools:context=".view.DetailedMovieFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/detailedMovieView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin_8_dp"
-        android:padding="@dimen/padding">
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/text_view_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textSize="@dimen/details_title_text_size"
+            tools:text="TITLE"
+            android:layout_marginStart="@dimen/item_margin"
+            android:layout_marginTop="@dimen/item_margin"
+            android:layout_marginEnd="@dimen/item_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"/>
+
+        <ToggleButton
+            android:id="@+id/toggle_favorite"
+            android:layout_width="@dimen/details_toggle_size"
+            android:layout_height="@dimen/details_toggle_size"
+            android:layout_gravity="end"
+            android:background="@drawable/toggle_favorite"
+            android:textOn=""
+            android:textOff=""
+            android:layout_marginEnd="@dimen/item_margin"
+            android:layout_marginTop="@dimen/item_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageViewBackgroundPoster"
             android:layout_width="match_parent"
             android:layout_height="@dimen/height_250"
             android:scaleType="centerCrop"
+            android:background="@color/purple_200"
             android:adjustViewBounds="true"
+            android:layout_marginBottom="@dimen/item_margin"
+            android:layout_marginStart="@dimen/item_margin"
+            android:layout_marginEnd="@dimen/item_margin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/title"
-            android:textAlignment="textStart"
-            android:textSize="0dp"
-            android:textStyle="bold"
-            app:layout_constraintTop_toBottomOf="@id/imageViewBackgroundPoster"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textViewOriginalTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/originalTitle"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
-
-        <TextView
-            android:id="@+id/textViewDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_40_dp"
-            android:padding="@dimen/padding"
-            android:text="@string/description"
-            android:textSize="@dimen/text_size_description"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageViewPoster"
-            app:layout_constraintVertical_bias="0.622" />
+            app:layout_constraintTop_toBottomOf="@id/text_view_title" />
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageViewPoster"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_8_dp"
-            android:layout_marginTop="@dimen/margin_start_12"
+            android:id="@+id/image_view_poster"
+            android:layout_width="@dimen/details_poster_width"
+            android:layout_height="@dimen/details_poster_height"
             android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:src="@drawable/poster_background"
+            android:background="@color/purple_200"
+            android:layout_marginStart="@dimen/item_margin"
+            android:layout_marginTop="@dimen/item_margin"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewOriginalTitle" />
-
-
-        <TextView
-            android:id="@+id/textViewYearOfReleaseLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_4_dp"
-            android:text="@string/release_date_label"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintStart_toEndOf="@id/imageViewPoster"
-            app:layout_constraintTop_toTopOf="@+id/imageViewPoster" />
+            app:layout_constraintTop_toBottomOf="@id/imageViewBackgroundPoster"/>
 
         <TextView
-            android:id="@+id/textViewYearOfRelease"
+            android:id="@+id/text_view_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/margin_4_dp"
-            android:text="@string/year_of_release"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
+            tools:text="movie"
+            android:layout_marginStart="@dimen/item_margin"
+            app:layout_constraintStart_toEndOf="@id/image_view_poster"
+            app:layout_constraintTop_toTopOf="@id/image_view_poster"/>
+
+        <TextView
+            android:id="@+id/text_view_year"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text=": 2001"
+            android:layout_marginStart="@dimen/item_margin"
+            app:layout_constraintStart_toEndOf="@id/text_view_type"
+            app:layout_constraintTop_toTopOf="@id/text_view_type"/>
+
+        <TextView
+            android:id="@+id/text_view_runtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="120 min"
+            android:layout_marginStart="@dimen/item_margin"
+            app:layout_constraintStart_toEndOf="@id/image_view_poster"
+            app:layout_constraintTop_toBottomOf="@id/text_view_type" />
+
+        <TextView
+            android:id="@+id/text_view_rating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="10.0"
+            android:layout_marginStart="@dimen/item_margin"
+            app:layout_constraintTop_toBottomOf="@id/text_view_runtime"
+            app:layout_constraintStart_toEndOf="@id/image_view_poster"/>
+
+        <TextView
+            android:id="@+id/text_view_votes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="(9999)"
+            android:layout_marginStart="@dimen/item_margin"
+            app:layout_constraintStart_toEndOf="@id/text_view_rating"
+            app:layout_constraintTop_toTopOf="@id/text_view_rating"/>
+
+        <TextView
+            android:id="@+id/text_view_actors"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="actors....a lot of different people who took part in this movie"
+            android:layout_marginStart="@dimen/item_margin"
+            android:layout_marginEnd="@dimen/item_margin"
+            app:layout_constraintStart_toEndOf="@id/image_view_poster"
+            app:layout_constraintTop_toBottomOf="@id/text_view_rating"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <TextView
+            android:id="@+id/text_view_box_office"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="Box office:...."
+            android:layout_marginStart="@dimen/item_margin"
+            app:layout_constraintStart_toEndOf="@id/image_view_poster"
+            app:layout_constraintTop_toBottomOf="@id/text_view_actors"/>
+
+        <TextView
+            android:id="@+id/text_view_released"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="31.12.1990"
+            android:layout_marginStart="@dimen/item_margin"
+            app:layout_constraintStart_toEndOf="@id/image_view_poster"
+            app:layout_constraintTop_toBottomOf="@id/text_view_box_office"/>
+
+        <TextView
+            android:id="@+id/text_view_genres"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            tools:text="Genres: Action, Action, Action, Action, Action"
+            android:layout_marginStart="@dimen/item_margin"
+            android:layout_marginEnd="@dimen/item_margin"
+            app:layout_constraintStart_toEndOf="@id/image_view_poster"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.977"
-            app:layout_constraintStart_toEndOf="@+id/textViewYearOfReleaseLabel"
-            app:layout_constraintTop_toTopOf="@id/textViewYearOfReleaseLabel"
-            tools:ignore="MissingConstraints" />
+            app:layout_constraintTop_toBottomOf="@id/text_view_released"/>
 
         <TextView
-            android:id="@+id/textViewGenreLabel"
-            android:layout_width="wrap_content"
+            android:id="@+id/text_view_lists"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8_dp"
-            android:text="@string/genre_label"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintStart_toStartOf="@+id/textViewYearOfReleaseLabel"
-            app:layout_constraintTop_toBottomOf="@+id/textViewYearOfReleaseLabel" />
+            tools:text="Trending, Now playing"
+            android:layout_marginStart="@dimen/item_margin"
+            android:layout_marginEnd="@dimen/item_margin"
+            app:layout_constraintStart_toEndOf="@id/image_view_poster"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_view_genres"/>
 
         <TextView
-            android:id="@+id/textViewGenre"
+            android:id="@+id/text_view_plot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8_dp"
-            android:text="@string/genre"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintStart_toStartOf="@+id/textViewYearOfRelease"
-            app:layout_constraintTop_toTopOf="@+id/textViewGenreLabel"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/textViewRuntimeLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8_dp"
-            android:text="@string/runtime_label"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintStart_toStartOf="@+id/textViewGenreLabel"
-            app:layout_constraintTop_toBottomOf="@+id/textViewGenreLabel" />
-
-        <TextView
-            android:id="@+id/textViewRuntime"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8_dp"
-            android:text="@string/runtime"
-            android:textAlignment="textStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintStart_toStartOf="@+id/textViewGenre"
-            app:layout_constraintTop_toTopOf="@+id/textViewRuntimeLabel" />
-
-        <TextView
-            android:id="@+id/textViewPopularityLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/margin_4_dp"
-            android:text="@string/popularity_label"
-            android:layout_marginTop="@dimen/margin_8_dp"
-            android:textAlignment="viewStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintBottom_toBottomOf="@+id/ImageViewPopularity"
-            app:layout_constraintStart_toStartOf="@+id/textViewRuntimeLabel"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRuntimeLabel" />
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ImageViewPopularity"
-            android:layout_width="31dp"
-            android:layout_height="49dp"
-            android:src="@drawable/star_rate"
-            android:adjustViewBounds="true"
-            android:paddingBottom="@dimen/margin_16_dp"
-            app:layout_constraintStart_toStartOf="@+id/textViewRuntime"
-            app:layout_constraintTop_toTopOf="@+id/textViewPopularity" />
-
-        <TextView
-            android:id="@+id/textViewPopularity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8_dp"
-            android:paddingTop="@dimen/margin_4_dp"
-            android:text="@string/popularity"
-            android:textAlignment="viewStart"
-            android:textSize="@dimen/text_size_detailed_info"
-            app:layout_constraintStart_toEndOf="@+id/ImageViewPopularity"
-            app:layout_constraintTop_toBottomOf="@+id/textViewRuntime" />
+            android:padding="@dimen/item_margin"
+            tools:text="Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: 'inception', the implantation of another person's idea into a target's subconscious."
+            app:layout_constraintTop_toBottomOf="@id/image_view_poster"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <FrameLayout
             android:id="@+id/detailedLoadingLayout"
@@ -193,7 +187,5 @@
                 android:layout_gravity="center" />
         </FrameLayout>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-</FrameLayout>
+</ScrollView>

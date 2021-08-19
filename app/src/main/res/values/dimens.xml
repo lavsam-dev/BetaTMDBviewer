@@ -15,4 +15,19 @@
     <dimen name="corner_radius_20">20dp</dimen>
     <dimen name="card_elevation_8">8dp</dimen>
     <dimen name="height_250">250dp</dimen>
+
+    <dimen name="text_card_corner_radius">16dp</dimen>
+    <dimen name="card_view_elevation">10dp</dimen>
+    <dimen name="item_margin">10dp</dimen>
+    <dimen name="item_text_size">10sp</dimen>
+    <dimen name="list_header_text_size">22sp</dimen>
+    <dimen name="list_header_margin">16dp</dimen>
+    <dimen name="item_poster_size">100dp</dimen>
+    <dimen name="details_poster_height">300dp</dimen>
+    <dimen name="details_poster_width">200dp</dimen>
+    <dimen name="item_toggle_size">22dp</dimen>
+    <dimen name="details_toggle_size">32dp</dimen>
+    <dimen name="details_title_text_size">32sp</dimen>
+    <dimen name="status_bar_text_size">10sp</dimen>
+
 </resources>
