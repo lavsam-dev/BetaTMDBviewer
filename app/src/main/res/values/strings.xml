@@ -27,4 +27,8 @@
     <string name="favorites">favorites</string>
     <string name="last_search">search</string>
     <string name="settings">settings</string>
+    <string name="adult">Adult Content</string>
+    <string name="off">Adult content off</string>
+    <string name="on">Adult content on</string>
+    <string name="settings_header">Settings</string>
 </resources>
