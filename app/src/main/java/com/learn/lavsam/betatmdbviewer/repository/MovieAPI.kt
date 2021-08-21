@@ -20,5 +20,6 @@ interface MovieAPI {
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: Int,
+        @Query("include_adult") isAdult: Boolean
     ) : Call<MovieList>
 }

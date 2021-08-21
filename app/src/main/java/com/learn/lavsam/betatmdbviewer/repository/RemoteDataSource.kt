@@ -28,7 +28,7 @@ class RemoteDataSource {
         movieAPI.getMovie(id, TMDB_API_KEY, LANGUAGE).enqueue(callback)
     }
 
-    fun getMovieList(page: Int, callback: Callback<MovieList>) {
-        movieAPI.getMovieList(TMDB_API_KEY, LANGUAGE, page).enqueue(callback)
+    fun getMovieList(page: Int, isAdult: Boolean, callback: Callback<MovieList>) {
+        movieAPI.getMovieList(TMDB_API_KEY, LANGUAGE, page, isAdult).enqueue(callback)
     }
 }

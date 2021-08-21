@@ -20,9 +20,9 @@ class MainViewModel() : ViewModel() {
     private val repositoryImpl: RepositoryImpl =
         RepositoryImpl(RemoteDataSource())
 
-    fun getMoviesListFromServer(page: Int) {
+    fun getMoviesListFromServer(page: Int, isAdult: Boolean) {
         liveDataToObserve.value = AppState.Loading
-        repositoryImpl.getMoviesListFromServer(page, callback)
+        repositoryImpl.getMoviesListFromServer(page, isAdult, callback)
     }
 
     private val callback = object : Callback<MovieList> {

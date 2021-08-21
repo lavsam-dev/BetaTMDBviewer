@@ -1,7 +1,9 @@
 package com.learn.lavsam.betatmdbviewer.view
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import android.view.ViewGroup
 import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.databinding.MainFragmentBinding
+import com.learn.lavsam.betatmdbviewer.view.SettingsFragment.Companion.IS_ADULT_SETTING
 import com.learn.lavsam.betatmdbviewer.viewmodel.AppState
 import com.learn.lavsam.betatmdbviewer.viewmodel.MainViewModel
 
@@ -18,6 +21,7 @@ class MainFragment : Fragment() {
 
     companion object {
         fun newInstance() = MainFragment()
+        var isAdultMovie: Boolean = false
     }
 
     private lateinit var viewModel: MainViewModel
@@ -51,10 +55,21 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        readSettings()
+        Log.d("TMDB", "onviewcreated")
         binding.mainFragmentRecyclerView.adapter = adapter
         viewModel.liveDataToObserve.observe(viewLifecycleOwner) { renderData(it) }
-        viewModel.getMoviesListFromServer(FIRST_PAGE)
+        viewModel.getMoviesListFromServer(FIRST_PAGE, isAdultMovie)
     }
+
+    private fun readSettings() {
+        activity?.let {
+            isAdultMovie = (it.getPreferences(Context.MODE_PRIVATE).getBoolean(IS_ADULT_SETTING, false))
+        }
+        Log.d("TMDB", "readsettings")
+    }
+
 
     private fun renderData(appState: AppState) {
         when (appState) {
@@ -69,7 +84,7 @@ class MainFragment : Fragment() {
                 binding.loadingLayout.visibility = View.GONE
                 binding.main.showSnackBar(getString(R.string.error_appstate),
                     getString(R.string.reload_appstate),
-                    { viewModel.getMoviesListFromServer(1) })
+                    { viewModel.getMoviesListFromServer(1, isAdultMovie) })
             }
         }
     }

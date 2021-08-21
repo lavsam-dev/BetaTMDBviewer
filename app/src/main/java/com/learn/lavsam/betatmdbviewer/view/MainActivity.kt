@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
         }
-        initNavigation()
     }
 
     private fun addFragment(fragment: Fragment) {
@@ -39,10 +38,6 @@ class MainActivity : AppCompatActivity() {
             .commit()
     }
 
-    private fun initNavigation() {
-        val navigation: NavigationBarView = findViewById(R.id.bottom_view)
-//        setSupportActionBar(navigation.)
-    }
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_bottom, menu)
         return super.onCreateOptionsMenu(menu)
