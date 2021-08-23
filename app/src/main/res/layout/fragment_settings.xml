@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/settings_scroll_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/settings_container"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/settings_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:text="@string/settings_header"
+            android:textSize="@dimen/details_title_text_size"
+            tools:text="Settings"
+            android:layout_marginStart="@dimen/item_margin"
+            android:layout_marginTop="@dimen/item_margin"
+            android:layout_marginEnd="@dimen/item_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/settings_icon"/>
+
+        <ToggleButton
+            android:id="@+id/settings_icon"
+            android:layout_width="@dimen/details_toggle_size"
+            android:layout_height="@dimen/details_toggle_size"
+            android:layout_gravity="end"
+            android:background="@drawable/icon_menu_settings"
+            android:textOn=""
+            android:textOff=""
+            android:layout_marginEnd="@dimen/item_margin"
+            android:layout_marginTop="@dimen/item_margin"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/settings_switchAdult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_start_12"
+            android:text="@string/adult"
+            android:textOff="@string/off"
+            android:textOn="@string/on"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/settings_header"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

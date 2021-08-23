@@ -23,4 +23,19 @@
     <string name="rating">Rating: </string>
     <string name="runtimelabel">Runtime: </string>
     <string name="typeMovie">Movie</string>
+    <string name="list">movies</string>
+    <string name="favorites">favorites</string>
+    <string name="last_search">search</string>
+    <string name="settings">settings</string>
+    <string name="adult">Adult Content</string>
+    <string name="off">Adult content off</string>
+    <string name="on">Adult content on</string>
+    <string name="settings_header">Settings</string>
+    <string name="history">history</string>
+    <string name="movie_note">note</string>
+    <string name="label_save">Save</string>
+    <string name="label_cancel">Cancel</string>
+    <string name="header_dialog_note">Note</string>
+    <string name="dialog_note_save">Save</string>
+    <string name="dialog_note_cancel">Cancel</string>
 </resources>
