@@ -16,6 +16,8 @@ import com.learn.lavsam.betatmdbviewer.viewmodel.AppState
 import com.learn.lavsam.betatmdbviewer.viewmodel.MainViewModel
 
 private const val FIRST_PAGE = 1
+private const val VISIBILITY_GONE = View.GONE
+private const val VISIBILITY_VISIBLE = View.VISIBLE
 
 class MainFragment : Fragment() {
 
@@ -57,7 +59,6 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         readSettings()
-        Log.d("TMDB", "onviewcreated")
         binding.mainFragmentRecyclerView.adapter = adapter
         viewModel.liveDataToObserve.observe(viewLifecycleOwner) { renderData(it) }
         viewModel.getMoviesListFromServer(FIRST_PAGE, isAdultMovie)
@@ -67,24 +68,23 @@ class MainFragment : Fragment() {
         activity?.let {
             isAdultMovie = (it.getPreferences(Context.MODE_PRIVATE).getBoolean(IS_ADULT_SETTING, false))
         }
-        Log.d("TMDB", "readsettings")
     }
 
 
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success -> {
-                binding.loadingLayout.visibility = View.GONE
+                binding.loadingLayout.visibility = VISIBILITY_GONE
                 adapter.setMovie(appState.movieData)
             }
             is AppState.Loading -> {
-                binding.loadingLayout.visibility = View.VISIBLE
+                binding.loadingLayout.visibility = VISIBILITY_VISIBLE
             }
             is AppState.Error -> {
-                binding.loadingLayout.visibility = View.GONE
+                binding.loadingLayout.visibility = VISIBILITY_GONE
                 binding.main.showSnackBar(getString(R.string.error_appstate),
                     getString(R.string.reload_appstate),
-                    { viewModel.getMoviesListFromServer(1, isAdultMovie) })
+                    { viewModel.getMoviesListFromServer(FIRST_PAGE, isAdultMovie) })
             }
         }
     }

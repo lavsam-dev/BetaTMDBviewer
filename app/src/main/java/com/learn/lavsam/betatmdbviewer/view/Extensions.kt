@@ -3,7 +3,6 @@ package com.learn.lavsam.betatmdbviewer.view
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
-import android.provider.Settings.Global.getString
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
@@ -42,7 +41,7 @@ fun getCurrentDateTime(): String {
 fun View.showPostDialog(title: String): String {
 
     var note: String = ""
-    val alert =  AlertDialog.Builder(this.context)
+    val alert = AlertDialog.Builder(this.context)
 
     val edittext = EditText(this.context)
     edittext.hint = title
@@ -50,28 +49,33 @@ fun View.showPostDialog(title: String): String {
 
     var layout = this.context?.let { FrameLayout(it) }
 
-    layout?.setPadding(DIALOG_NOTE_PADDINGLEFT, DIALOG_NOTE_PADDINGTOP, DIALOG_NOTE_PADDINGRIGHT,
-        DIALOG_NOTE_PADDINGBOTTOM)
+    layout?.setPadding(
+        DIALOG_NOTE_PADDINGLEFT, DIALOG_NOTE_PADDINGTOP, DIALOG_NOTE_PADDINGRIGHT,
+        DIALOG_NOTE_PADDINGBOTTOM
+    )
     alert.setTitle(title)
     layout?.addView(edittext)
     alert.setView(layout)
-    alert.setPositiveButton(context.getString(R.string.dialog_note_save), DialogInterface.OnClickListener {
+    alert.setPositiveButton(
+        context.getString(R.string.dialog_note_save),
+        DialogInterface.OnClickListener {
 
-            dialog, which ->
-        run {
-            note = edittext.text.toString()
-            showToast(note)
+                dialog, which ->
+            run {
+                note = edittext.text.toString()
                 this?.hideKeyboard()
-        }
-    })
-    alert.setNegativeButton(context.getString(R.string.dialog_note_cancel), DialogInterface.OnClickListener {
+            }
+        })
+    alert.setNegativeButton(
+        context.getString(R.string.dialog_note_cancel),
+        DialogInterface.OnClickListener {
 
-            dialog, which ->
-        run {
-            note = ""
-            dialog.dismiss()
-        }
-    })
+                dialog, which ->
+            run {
+                note = ""
+                dialog.dismiss()
+            }
+        })
     alert.show()
 
     return note

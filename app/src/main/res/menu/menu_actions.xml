@@ -21,11 +21,6 @@
         android:icon="@android:drawable/ic_menu_search"
         android:visible="false"/>
     <item
-        android:id="@+id/menu_actions_item_movie_note"
-        android:title="@string/movie_note"
-        android:icon="@android:drawable/ic_menu_search"
-        android:visible="true"/>
-    <item
         android:id="@+id/menu_actions_item_settings"
         android:title="@string/settings"
         android:icon="@drawable/icon_menu_settings"

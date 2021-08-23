@@ -1,21 +1,12 @@
 package com.learn.lavsam.betatmdbviewer.view
 
-import android.app.AlertDialog
-import android.content.Context
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.view.View
-import android.view.inputmethod.InputMethodManager
-import android.widget.EditText
-import android.widget.FrameLayout
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.databinding.MainActivityBinding
-import kotlinx.android.synthetic.main.main_activity.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -58,10 +49,6 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.menu_actions_item_history -> {
                 addFragment(HistoryFragment())
-                return true
-            }
-            R.id.menu_actions_item_movie_note -> {
-                container.showPostDialog("Title")
                 return true
             }
             R.id.menu_actions_item_settings -> {

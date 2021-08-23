@@ -19,7 +19,8 @@ import com.squareup.picasso.Picasso
 
 private const val IMAGE_SIZE = BuildConfig.IMAGE_SIZE_CONST
 private const val BASE_URL = BuildConfig.BASE_URL_CONST
-
+private const val VISIBILITY_GONE = View.GONE
+private const val VISIBILITY_VISIBLE = View.VISIBLE
 
 class DetailedMovieFragment : Fragment() {
 
@@ -74,18 +75,18 @@ class DetailedMovieFragment : Fragment() {
     private fun renderData(appState: AppState) = with(binding) {
         when (appState) {
             is AppState.Success -> {
-                detailedMovieView.visibility = View.VISIBLE
-                detailedLoadingLayout.visibility = View.GONE
+                detailedMovieView.visibility = VISIBILITY_VISIBLE
+                detailedLoadingLayout.visibility = VISIBILITY_GONE
                 setMovie(appState.movieData.first())
 
             }
             is AppState.Loading -> {
-                detailedMovieView.visibility = View.GONE
-                detailedLoadingLayout.visibility = View.VISIBLE
+                detailedMovieView.visibility = VISIBILITY_GONE
+                detailedLoadingLayout.visibility = VISIBILITY_VISIBLE
             }
             is AppState.Error -> {
-                detailedMovieView.visibility = View.VISIBLE
-                detailedLoadingLayout.visibility = View.GONE
+                detailedMovieView.visibility = VISIBILITY_VISIBLE
+                detailedLoadingLayout.visibility = VISIBILITY_GONE
                 detailedMovieView.showSnackBar(getString(R.string.error_appstate),
                     getString(R.string.reload_appstate),
                     { viewModel.getMovieFromRemoteSource(movieBundle.id) })
@@ -120,7 +121,5 @@ class DetailedMovieFragment : Fragment() {
             .get()
             .load(BASE_URL + IMAGE_SIZE + movieDetail.backdrop_path)
             .into(binding.imageViewBackgroundPoster)
-
     }
-
 }

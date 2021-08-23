@@ -13,11 +13,14 @@ import com.learn.lavsam.betatmdbviewer.viewmodel.AppState
 import com.learn.lavsam.betatmdbviewer.viewmodel.HistoryViewModel
 import kotlinx.android.synthetic.main.history_fragment.*
 
+private const val VISIBILITY_GONE = View.GONE
+private const val VISIBILITY_VISIBLE = View.VISIBLE
+
 class HistoryFragment : Fragment() {
 
     private var _binding: HistoryFragmentBinding? = null
     private val binding get() = _binding!!
-        private val viewModel: HistoryViewModel by lazy {
+    private val viewModel: HistoryViewModel by lazy {
         ViewModelProvider(this).get(HistoryViewModel::class.java)
     }
     private val adapter: HistoryAdapter by lazy {
@@ -42,16 +45,16 @@ class HistoryFragment : Fragment() {
     private fun renderData(appState: AppState) {
         when (appState) {
             is AppState.Success -> {
-                binding.historyFragmentRecyclerView.visibility = View.VISIBLE
+                binding.historyFragmentRecyclerView.visibility = VISIBILITY_VISIBLE
                 binding.loadingLayout.visibility = View.GONE
                 adapter.setData(appState.movieData)
             }
             is AppState.Loading -> {
-                binding.historyFragmentRecyclerView.visibility = View.GONE
+                binding.historyFragmentRecyclerView.visibility = VISIBILITY_GONE
                 binding.loadingLayout.visibility = View.VISIBLE
             }
             is AppState.Error -> {
-                binding.historyFragmentRecyclerView.visibility = View.VISIBLE
+                binding.historyFragmentRecyclerView.visibility = VISIBILITY_VISIBLE
                 binding.loadingLayout.visibility = View.GONE
                 binding.historyFragmentRecyclerView.showSnackBar(
                     getString(R.string.error_appstate),

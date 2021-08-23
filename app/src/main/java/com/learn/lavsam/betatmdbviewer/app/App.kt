@@ -36,22 +36,5 @@ class App : Application() {
             }
             return db!!.historyDao()
         }
-
-//        fun getNoteDao(): NoteDao {
-//            if (dataBase == null) {
-//                synchronized(DataBase::class.java) {
-//                    if (dataBase == null) {
-//                        if (appInstance == null) throw IllegalStateException("Application is null while creating DataBase")
-//                        dataBase = Room.databaseBuilder(
-//                            appInstance!!.applicationContext,
-//                            DataBase::class.java,
-//                            DB_NAME)
-//                            .allowMainThreadQueries()
-//                            .build()
-//                    }
-//                }
-//            }
-//            return dataBase!!.noteDao()
-//        }
     }
 }
