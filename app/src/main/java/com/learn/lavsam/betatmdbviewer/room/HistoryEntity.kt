@@ -2,6 +2,7 @@ package com.learn.lavsam.betatmdbviewer.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.util.*
 
 @Entity
 data class HistoryEntity(
@@ -15,5 +16,6 @@ data class HistoryEntity(
     val release_date: String?,
     val backdrop_path: String?,
     val overview: String?,
-    var note: String?
+    val note: String?,
+    val look_time: String?
 )

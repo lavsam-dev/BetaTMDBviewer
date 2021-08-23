@@ -4,5 +4,5 @@ import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 
 interface LocalRepository {
     fun getAllHistory(): MutableList<MovieDetail>
-    fun saveEntity(movie: MovieDetail)
+    fun saveHistoryEntity(movie: MovieDetail)
 }

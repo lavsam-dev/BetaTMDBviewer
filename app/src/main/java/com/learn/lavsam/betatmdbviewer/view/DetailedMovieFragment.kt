@@ -60,6 +60,15 @@ class DetailedMovieFragment : Fragment() {
             renderData(it)
         })
         viewModel.getMovieFromRemoteSource(movieBundle.id)
+
+        binding.enterNote.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View?) {
+                movieBundle.note = v?.showPostDialog(getString(R.string.header_dialog_note))
+                saveMovie(movieBundle)
+                v?.showToast(movieBundle.note.toString())
+            }
+        })
+
     }
 
     private fun renderData(appState: AppState) = with(binding) {
@@ -84,25 +93,34 @@ class DetailedMovieFragment : Fragment() {
         }
     }
 
-    private fun setMovie(movie: MovieDetail) {
+    private fun saveMovie(movieDetail: MovieDetail) {
+        viewModel.saveMovieToDB(movieDetail)
+    }
+
+    private fun setMovie(movieDetail: MovieDetail) {
         val id = movieBundle.id
         with(binding) {
-            textViewTitle.text = movie.title
-            textViewPlot.text = movie.overview
-            textViewReleased.text = getString(R.string.released) + movie.release_date.toString()
-            textViewRating.text = getString(R.string.rating) + movie.vote_average.toString()
-            textViewRuntime.text = getString(R.string.runtimelabel) + movie.runtime.toString() + " min"
+            textViewTitle.text = movieDetail.title
+            textViewPlot.text = movieDetail.overview
+            textViewReleased.text =
+                getString(R.string.released) + movieDetail.release_date.toString()
+            textViewRating.text = getString(R.string.rating) + movieDetail.vote_average.toString()
+            textViewRuntime.text =
+                getString(R.string.runtimelabel) + movieDetail.runtime.toString() + " min"
             textViewType.text = getString(R.string.typeMovie)
-            textViewYear.text = movie.release_date?.substring(0, 4) ?: ""
+            textViewYear.text = movieDetail.release_date?.substring(0, 4) ?: ""
+            saveMovie(movieDetail)
         }
         Picasso
             .get()
-            .load(BASE_URL + IMAGE_SIZE + movie.poster_path)
+            .load(BASE_URL + IMAGE_SIZE + movieDetail.poster_path)
             .into(binding.imageViewPoster)
 
         Picasso
             .get()
-            .load(BASE_URL + IMAGE_SIZE + movie.backdrop_path)
+            .load(BASE_URL + IMAGE_SIZE + movieDetail.backdrop_path)
             .into(binding.imageViewBackgroundPoster)
+
     }
+
 }
