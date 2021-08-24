@@ -5,7 +5,8 @@ import androidx.lifecycle.ViewModel
 import com.learn.lavsam.betatmdbviewer.repository.ContactRepository
 import com.learn.lavsam.betatmdbviewer.repository.ContactRepositoryImpl
 
-class ContactViewModel(private val repository: ContactRepository = ContactRepositoryImpl()) : ViewModel() {
+class ContactViewModel(private val repository: ContactRepository = ContactRepositoryImpl()) :
+    ViewModel() {
     val contacts: MutableLiveData<ContactAppState> = MutableLiveData()
 
     fun getContacts() {
