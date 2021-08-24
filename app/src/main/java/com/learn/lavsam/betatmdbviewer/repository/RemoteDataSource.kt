@@ -2,7 +2,6 @@ package com.learn.lavsam.betatmdbviewer.repository
 
 import com.google.gson.GsonBuilder
 import com.learn.lavsam.betatmdbviewer.BuildConfig
-import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.data.MovieList
 import com.learn.lavsam.betatmdbviewer.dto.MovieDetailDTO
 import retrofit2.Callback

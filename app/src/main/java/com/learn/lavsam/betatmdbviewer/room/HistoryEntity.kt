@@ -2,7 +2,6 @@ package com.learn.lavsam.betatmdbviewer.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.util.*
 
 @Entity
 data class HistoryEntity(

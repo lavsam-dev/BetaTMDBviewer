@@ -35,7 +35,7 @@
     <string name="movie_note">note</string>
     <string name="label_save">Save</string>
     <string name="label_cancel">Cancel</string>
-    <string name="header_dialog_note">Note</string>
+    <string name="header_dialog_note">Enter note</string>
     <string name="dialog_note_save">Save</string>
     <string name="dialog_note_cancel">Cancel</string>
 </resources>

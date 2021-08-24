@@ -9,17 +9,17 @@ import retrofit2.http.Query
 
 interface MovieAPI {
     @GET("3/movie/{id}")
-    fun getMovie (
+    fun getMovie(
         @Path("id") id: Int?,
         @Query("api_key") apiKey: String,
         @Query("language") language: String
-    ) : Call<MovieDetailDTO>
+    ): Call<MovieDetailDTO>
 
     @GET("3/movie/popular")
-    fun getMovieList (
+    fun getMovieList(
         @Query("api_key") apiKey: String,
         @Query("language") language: String,
         @Query("page") page: Int,
         @Query("include_adult") isAdult: Boolean
-    ) : Call<MovieList>
+    ): Call<MovieList>
 }

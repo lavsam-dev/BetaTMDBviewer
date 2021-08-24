@@ -63,13 +63,11 @@ class DetailedMovieFragment : Fragment() {
         viewModel.getMovieFromRemoteSource(movieBundle.id)
 
         binding.enterNote.setOnClickListener(object : View.OnClickListener {
-            override fun onClick(v: View?) {
-                movieBundle.note = v?.showPostDialog(getString(R.string.header_dialog_note))
+            override fun onClick(view: View?) {
+                movieBundle.note = view?.showPostDialog(getString(R.string.header_dialog_note))
                 saveMovie(movieBundle)
-                v?.showToast(movieBundle.note.toString())
             }
         })
-
     }
 
     private fun renderData(appState: AppState) = with(binding) {

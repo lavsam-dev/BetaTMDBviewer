@@ -13,7 +13,6 @@ class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
     private var isAdult: Boolean = false
 
-
     companion object {
         const val IS_ADULT_SETTING = "ADULT_SETTING"
 
@@ -27,6 +26,7 @@ class SettingsFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?,
