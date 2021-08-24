@@ -55,6 +55,10 @@ class MainActivity : AppCompatActivity() {
             R.id.menu_actions_item_search_results -> {
                 return true
             }
+            R.id.menu_actions_item_contacts -> {
+                addFragment(ContactFragment())
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }

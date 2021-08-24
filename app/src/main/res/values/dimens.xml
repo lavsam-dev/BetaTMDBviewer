@@ -30,5 +30,6 @@
     <dimen name="details_title_text_size">32sp</dimen>
     <dimen name="status_bar_text_size">10sp</dimen>
     <dimen name="margin_start_30">30dp</dimen>
+    <dimen name="item_text_size_contact">15sp</dimen>
 
 </resources>
