@@ -6,6 +6,8 @@ import android.provider.ContactsContract
 import com.learn.lavsam.betatmdbviewer.app.ContextProvider
 import com.learn.lavsam.betatmdbviewer.app.IContextProvider
 
+private const val CONTACTS_SORT = "ASC"
+
 class ContactRepositoryImpl(contextProvider: IContextProvider = ContextProvider) :
     ContactRepository {
 
@@ -17,7 +19,7 @@ class ContactRepositoryImpl(contextProvider: IContextProvider = ContextProvider)
             null,
             null,
             null,
-            ContactsContract.Contacts.DISPLAY_NAME + " ASC"
+            ContactsContract.Contacts.DISPLAY_NAME + " " + CONTACTS_SORT
         )
 
         val answer = mutableListOf<String>()

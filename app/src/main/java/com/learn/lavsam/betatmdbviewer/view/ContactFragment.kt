@@ -15,6 +15,14 @@ import com.learn.lavsam.betatmdbviewer.databinding.ContactFragmentBinding
 import com.learn.lavsam.betatmdbviewer.viewmodel.ContactAppState
 import com.learn.lavsam.betatmdbviewer.viewmodel.ContactViewModel
 
+private const val ACCESS_TITLE = "Доступ к контактам"
+private const val ACCESS_MESSAGE = "Объяснение"
+private const val ACCESS_POSITIVE_BUTTON = "Предоставить доступ"
+private const val ACCESS_NEGATIVE_BUTTON = "Не надо"
+private const val ACCESS_DISMISS_BUTTON = "Закрыть"
+private const val VISIBILITY_GONE = View.GONE
+private const val VISIBILITY_VISIBLE = View.VISIBLE
+
 class ContactFragment : Fragment() {
 
     companion object {
@@ -73,12 +81,12 @@ class ContactFragment : Fragment() {
                 }
                 shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS) -> {
                     AlertDialog.Builder(it)
-                        .setTitle("Доступ к контактам")
-                        .setMessage("Объяснение")
-                        .setPositiveButton("Предоставить доступ") { _, _ ->
+                        .setTitle(ACCESS_TITLE)
+                        .setMessage(ACCESS_MESSAGE)
+                        .setPositiveButton(ACCESS_POSITIVE_BUTTON) { _, _ ->
                             requestPermissionLauncher.launch(Manifest.permission.READ_CONTACTS)
                         }
-                        .setNegativeButton("Не надо") { dialog, _ -> dialog.dismiss() }
+                        .setNegativeButton(ACCESS_NEGATIVE_BUTTON) { dialog, _ -> dialog.dismiss() }
                         .create()
                         .show()
                 }
@@ -92,20 +100,13 @@ class ContactFragment : Fragment() {
             ActivityResultContracts.RequestPermission()
         ) { isGranted: Boolean ->
             if (isGranted) {
-                // Permission is granted. Continue the action or workflow in your
-                // app.
                 getContacts()
             } else {
-                // Explain to the user that the feature is unavailable because the
-                // features requires a permission that the user has denied. At the
-                // same time, respect the user's decision. Don't link to system
-                // settings in an effort to convince the user to change their
-                // decision.
                 context?.let {
                     AlertDialog.Builder(it)
-                        .setTitle("Доступ к контактам")
-                        .setMessage("Объяснение")
-                        .setNegativeButton("Закрыть") { dialog, _ -> dialog.dismiss() }
+                        .setTitle(ACCESS_TITLE)
+                        .setMessage(ACCESS_MESSAGE)
+                        .setNegativeButton(ACCESS_DISMISS_BUTTON) { dialog, _ -> dialog.dismiss() }
                         .create()
                         .show()
                 }
@@ -123,15 +124,15 @@ class ContactFragment : Fragment() {
     }
 
     private fun View.show(): View {
-        if (visibility != View.VISIBLE) {
-            visibility = View.VISIBLE
+        if (visibility != VISIBILITY_VISIBLE) {
+            visibility = VISIBILITY_VISIBLE
         }
         return this
     }
 
     private fun View.hide(): View {
-        if (visibility != View.GONE) {
-            visibility = View.GONE
+        if (visibility != VISIBILITY_GONE) {
+            visibility = VISIBILITY_GONE
         }
         return this
     }

@@ -7,6 +7,6 @@
         android:id="@+id/contact_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/item_text_size"/>
+        android:textSize="@dimen/item_text_size_contact"/>
 
 </com.google.android.material.card.MaterialCardView>
