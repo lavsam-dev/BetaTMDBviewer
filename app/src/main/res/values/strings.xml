@@ -38,4 +38,5 @@
     <string name="header_dialog_note">Enter note</string>
     <string name="dialog_note_save">Save</string>
     <string name="dialog_note_cancel">Cancel</string>
+    <string name="contacts">contacts</string>
 </resources>

@@ -86,3 +86,4 @@ fun View.hideKeyboard() {
 fun View.showToast(message: String) {
     Toast.makeText(this.context, message, Toast.LENGTH_LONG).show()
 }
+
