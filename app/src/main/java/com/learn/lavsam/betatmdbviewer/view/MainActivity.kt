@@ -8,12 +8,9 @@ import androidx.fragment.app.Fragment
 import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.databinding.MainActivityBinding
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: MainActivityBinding
-    private val listFragment = MainFragment()
-    private val settingsFragment = SettingsFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,5 +58,4 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
-
 }

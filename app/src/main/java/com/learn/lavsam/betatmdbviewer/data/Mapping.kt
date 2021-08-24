@@ -2,8 +2,6 @@ package com.learn.lavsam.betatmdbviewer.data
 
 import com.learn.lavsam.betatmdbviewer.dto.MovieDetailDTO
 import com.learn.lavsam.betatmdbviewer.room.HistoryEntity
-import java.text.SimpleDateFormat
-import java.util.*
 
 fun convertDtoToModel(movieDTO: MovieDetailDTO): List<MovieDetail> {
     return listOf(

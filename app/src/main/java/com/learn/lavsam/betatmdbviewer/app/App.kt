@@ -2,7 +2,8 @@ package com.learn.lavsam.betatmdbviewer.app
 
 import android.app.Application
 import androidx.room.Room
-import com.learn.lavsam.betatmdbviewer.room.*
+import com.learn.lavsam.betatmdbviewer.room.HistoryDao
+import com.learn.lavsam.betatmdbviewer.room.HistoryDataBase
 
 class App : Application() {
 
@@ -28,7 +29,8 @@ class App : Application() {
                         db = Room.databaseBuilder(
                             appInstance!!.applicationContext,
                             HistoryDataBase::class.java,
-                            DB_NAME)
+                            DB_NAME
+                        )
                             .allowMainThreadQueries()
                             .build()
                     }

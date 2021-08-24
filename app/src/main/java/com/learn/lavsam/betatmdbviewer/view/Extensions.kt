@@ -59,17 +59,14 @@ fun View.showPostDialog(title: String): String {
     alert.setPositiveButton(
         context.getString(R.string.dialog_note_save),
         DialogInterface.OnClickListener {
-
                 dialog, which ->
             run {
                 note = edittext.text.toString()
-                this?.hideKeyboard()
             }
         })
     alert.setNegativeButton(
         context.getString(R.string.dialog_note_cancel),
         DialogInterface.OnClickListener {
-
                 dialog, which ->
             run {
                 note = ""

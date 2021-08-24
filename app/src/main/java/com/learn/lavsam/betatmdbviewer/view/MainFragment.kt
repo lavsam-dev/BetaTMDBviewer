@@ -1,13 +1,12 @@
 package com.learn.lavsam.betatmdbviewer.view
 
 import android.content.Context
-import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.databinding.MainFragmentBinding
@@ -66,10 +65,10 @@ class MainFragment : Fragment() {
 
     private fun readSettings() {
         activity?.let {
-            isAdultMovie = (it.getPreferences(Context.MODE_PRIVATE).getBoolean(IS_ADULT_SETTING, false))
+            isAdultMovie =
+                (it.getPreferences(Context.MODE_PRIVATE).getBoolean(IS_ADULT_SETTING, false))
         }
     }
-
 
     private fun renderData(appState: AppState) {
         when (appState) {

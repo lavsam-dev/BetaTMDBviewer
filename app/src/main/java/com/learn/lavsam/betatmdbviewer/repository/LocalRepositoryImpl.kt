@@ -14,6 +14,4 @@ class LocalRepositoryImpl (private val localDataSourceHistory: HistoryDao) : Loc
     override fun saveHistoryEntity(movieDetail: MovieDetail) {
         return localDataSourceHistory.insert(convertMovieToHistoryEntity(movieDetail))
     }
-
-
 }

@@ -3,7 +3,6 @@ package com.learn.lavsam.betatmdbviewer.viewmodel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.learn.lavsam.betatmdbviewer.BuildConfig
-import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.data.MovieList
 import com.learn.lavsam.betatmdbviewer.repository.RemoteDataSource
 import com.learn.lavsam.betatmdbviewer.repository.RepositoryImpl
