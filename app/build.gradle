@@ -70,6 +70,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+    // google maps
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'

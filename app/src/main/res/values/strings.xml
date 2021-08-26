@@ -39,4 +39,8 @@
     <string name="dialog_note_save">Save</string>
     <string name="dialog_note_cancel">Cancel</string>
     <string name="contacts">contacts</string>
+    <string name="goole_maps_api_key">AIzaSyBHuy55r87Ig3yoml4RfZaMBarluweURdo</string>
+    <string name="default_address">Котлин</string>
+    <string name="button_search_map">Search</string>
+    <string name="marker_start">Start</string>
 </resources>
