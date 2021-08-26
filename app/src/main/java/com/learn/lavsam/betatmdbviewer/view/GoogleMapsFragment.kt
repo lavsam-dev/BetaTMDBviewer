@@ -8,15 +8,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import java.io.IOException
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
+import com.learn.lavsam.betatmdbviewer.BuildConfig
 import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.databinding.GoogleMapsFragmentBinding
+import java.io.IOException
+
+private const val MAPS_ZOOM = 15f
+private const val MAPS_LINE_WIDTH = 5f
+// Медный всадник
+private const val INITIAL_PLACE_LATITUDE = 59.93624298768817
+private const val INITIAL_PLACE_LONGITUDE = 30.302355530877616
+
+private const val goole_maps_key = BuildConfig.GOOLE_MAPS_KEY
 
 class GoogleMapsFragment : Fragment() {
     private lateinit var map: GoogleMap
@@ -24,7 +32,7 @@ class GoogleMapsFragment : Fragment() {
 
     private val callback = OnMapReadyCallback { googleMap ->
         map = googleMap
-        val initialPlace = LatLng(52.52000659999999, 13.40495399999997)
+        val initialPlace = LatLng(INITIAL_PLACE_LATITUDE, INITIAL_PLACE_LONGITUDE)
         googleMap.addMarker(
             MarkerOptions().position(initialPlace).title(getString(R.string.marker_start))
         )
@@ -79,7 +87,7 @@ class GoogleMapsFragment : Fragment() {
     }
 
     private fun addMarkerToArray(location: LatLng) {
-        val marker = setMarker(location, markers.size.toString(), R.drawable.icon_map_pin)
+        val marker = setMarker(location, markers.size.toString(), R.drawable.ic_map_pin)
         markers.add(marker)
     }
 
@@ -105,7 +113,7 @@ class GoogleMapsFragment : Fragment() {
                 PolylineOptions()
                     .add(previous, current)
                     .color(Color.RED)
-                    .width(5f)
+                    .width(MAPS_LINE_WIDTH)
             )
         }
     }
@@ -137,19 +145,21 @@ class GoogleMapsFragment : Fragment() {
             addresses.first().longitude
         )
         view.post {
-            setMarker(location, searchText, R.drawable.icon_map_marker)
+            setMarker(location, searchText, R.drawable.ic_map_marker)
             map.moveCamera(
                 CameraUpdateFactory.newLatLngZoom(
                     location,
-                    15f
+                    MAPS_ZOOM
                 )
             )
         }
     }
 
     companion object {
-        fun newInstance(): GoogleMapsFragment {
-            return GoogleMapsFragment()
+        fun newInstance(bundle: Bundle): GoogleMapsFragment {
+            val fragment = GoogleMapsFragment()
+            fragment.arguments = bundle
+            return fragment
         }
     }
 }

@@ -9,7 +9,7 @@
         android:id="@+id/textAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="Заголовок с адресом" />
+        tools:text="@string/textAdress" />
 
     <LinearLayout
         android:layout_width="match_parent"

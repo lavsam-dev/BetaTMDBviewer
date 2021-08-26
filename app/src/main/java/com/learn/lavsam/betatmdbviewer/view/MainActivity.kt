@@ -59,6 +59,10 @@ class MainActivity : AppCompatActivity() {
                 addFragment(ContactFragment())
                 return true
             }
+            R.id.menu_actions_item_google_maps -> {
+                addFragment(GoogleMapsFragment())
+                return true
+            }
         }
         return super.onOptionsItemSelected(item)
     }

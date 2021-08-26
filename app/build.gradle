@@ -54,6 +54,10 @@ android {
         it.buildConfigField "String", "BASE_URL_CONST", baseUrlConst
         def imageSizeConst = properties.getProperty("image_size_const", "")
         it.buildConfigField "String", "IMAGE_SIZE_CONST", imageSizeConst
+
+        def goole_maps_api_key = properties.getProperty("goole_maps_api_key", "")
+        it.buildConfigField "String", "GOOLE_MAPS_KEY", goole_maps_api_key
+
     }
     kotlinOptions {
         jvmTarget = '1.8'

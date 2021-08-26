@@ -40,7 +40,13 @@
     <string name="dialog_note_cancel">Cancel</string>
     <string name="contacts">contacts</string>
     <string name="goole_maps_api_key">AIzaSyBHuy55r87Ig3yoml4RfZaMBarluweURdo</string>
-    <string name="default_address">Котлин</string>
+    <string name="default_address">Самара</string>
     <string name="button_search_map">Search</string>
     <string name="marker_start">Start</string>
+    <string name="googlemaps">map</string>
+    <string name="textAdress">Адрес маркера</string>
+    <string name="access_title">Доступ к контактам</string>
+    <string name="access_message">Объяснение</string>
+    <string name="access_positive_button">Предоставить доступ</string>
+    <string name="access_negative_button">Не надо</string>
 </resources>
