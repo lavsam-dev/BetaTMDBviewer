@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -34,16 +35,10 @@ android {
     }
     buildTypes.each {
         Properties properties = new Properties()
-
         properties.load(project.rootProject.file("tmdb.properties").newDataInputStream())
+
         def apiKey = properties.getProperty("tmdb_api_key", "")
         it.buildConfigField "String", "TMDB_API_KEY", apiKey
-        def serverErrorMessage = properties.getProperty("server_error_message", "")
-        it.buildConfigField "String", "SERVER_ERROR_MESSAGE", serverErrorMessage
-        def requestErrorMessage = properties.getProperty("request_error_message", "")
-        it.buildConfigField "String", "REQUEST_ERROR_MESSAGE", requestErrorMessage
-        def corruptedDataMessage = properties.getProperty("corrupted_data_message", "")
-        it.buildConfigField "String", "CORRUPTED_DATA_MESSAGE", corruptedDataMessage
 
         def mainUrlConst = properties.getProperty("main_url_const", "")
         it.buildConfigField "String", "MAIN_URL_CONST", mainUrlConst
@@ -56,7 +51,7 @@ android {
         it.buildConfigField "String", "IMAGE_SIZE_CONST", imageSizeConst
 
         def goole_maps_api_key = properties.getProperty("goole_maps_api_key", "")
-        it.buildConfigField "String", "GOOLE_MAPS_KEY", goole_maps_api_key
+        it.buildConfigField "String", "MAPS_API_KEY", goole_maps_api_key
 
     }
     kotlinOptions {

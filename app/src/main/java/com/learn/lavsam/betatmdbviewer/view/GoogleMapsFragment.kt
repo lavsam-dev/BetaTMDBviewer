@@ -24,8 +24,6 @@ private const val MAPS_LINE_WIDTH = 5f
 private const val INITIAL_PLACE_LATITUDE = 59.93624298768817
 private const val INITIAL_PLACE_LONGITUDE = 30.302355530877616
 
-private const val goole_maps_key = BuildConfig.GOOLE_MAPS_KEY
-
 class GoogleMapsFragment : Fragment() {
     private lateinit var map: GoogleMap
     private val markers: ArrayList<Marker> = arrayListOf()
