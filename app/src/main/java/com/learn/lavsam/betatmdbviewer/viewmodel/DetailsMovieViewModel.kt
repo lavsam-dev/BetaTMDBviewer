@@ -2,7 +2,8 @@ package com.learn.lavsam.betatmdbviewer.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.learn.lavsam.betatmdbviewer.BuildConfig
+import com.learn.lavsam.betatmdbviewer.R
+import com.learn.lavsam.betatmdbviewer.app.App.Companion.context
 import com.learn.lavsam.betatmdbviewer.app.App.Companion.getHistoryDao
 import com.learn.lavsam.betatmdbviewer.data.MovieDetail
 import com.learn.lavsam.betatmdbviewer.data.convertDtoToModel
@@ -13,10 +14,6 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import java.io.IOException
-
-private const val SERVER_ERROR = BuildConfig.SERVER_ERROR_MESSAGE
-private const val REQUEST_ERROR = BuildConfig.REQUEST_ERROR_MESSAGE
-private const val CORRUPTED_DATA = BuildConfig.CORRUPTED_DATA_MESSAGE
 
 class DetailsMovieViewModel(
     val detailsLiveData: MutableLiveData<AppState> = MutableLiveData(),
@@ -47,13 +44,23 @@ class DetailsMovieViewModel(
                 if (response.isSuccessful && serverResponse != null) {
                     checkResponse(serverResponse)
                 } else {
-                    AppState.Error(Throwable(SERVER_ERROR))
+                    AppState.Error(
+                        Throwable(
+                            context.getResources().getString(R.string.server_error)
+                        )
+                    )
                 }
             )
         }
 
         override fun onFailure(call: Call<MovieDetailDTO>, t: Throwable) {
-            detailsLiveData.postValue(AppState.Error(Throwable(t.message ?: REQUEST_ERROR)))
+            detailsLiveData.postValue(
+                AppState.Error(
+                    Throwable(
+                        t.message ?: context.getResources().getString(R.string.request_error)
+                    )
+                )
+            )
         }
     }
 
@@ -63,7 +70,7 @@ class DetailsMovieViewModel(
             serverResponse.release_date == null || serverResponse.title == null || serverResponse.vote_average == null ||
             serverResponse.runtime == null
         ) {
-            AppState.Error(Throwable(CORRUPTED_DATA))
+            AppState.Error(Throwable(context.getResources().getString(R.string.corrupted_data)))
         } else {
             AppState.Success(convertDtoToModel(serverResponse))
         }

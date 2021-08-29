@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
 }
 
 android {
@@ -34,16 +35,10 @@ android {
     }
     buildTypes.each {
         Properties properties = new Properties()
-
         properties.load(project.rootProject.file("tmdb.properties").newDataInputStream())
+
         def apiKey = properties.getProperty("tmdb_api_key", "")
         it.buildConfigField "String", "TMDB_API_KEY", apiKey
-        def serverErrorMessage = properties.getProperty("server_error_message", "")
-        it.buildConfigField "String", "SERVER_ERROR_MESSAGE", serverErrorMessage
-        def requestErrorMessage = properties.getProperty("request_error_message", "")
-        it.buildConfigField "String", "REQUEST_ERROR_MESSAGE", requestErrorMessage
-        def corruptedDataMessage = properties.getProperty("corrupted_data_message", "")
-        it.buildConfigField "String", "CORRUPTED_DATA_MESSAGE", corruptedDataMessage
 
         def mainUrlConst = properties.getProperty("main_url_const", "")
         it.buildConfigField "String", "MAIN_URL_CONST", mainUrlConst
@@ -54,6 +49,10 @@ android {
         it.buildConfigField "String", "BASE_URL_CONST", baseUrlConst
         def imageSizeConst = properties.getProperty("image_size_const", "")
         it.buildConfigField "String", "IMAGE_SIZE_CONST", imageSizeConst
+
+        def goole_maps_api_key = properties.getProperty("goole_maps_api_key", "")
+        it.buildConfigField "String", "MAPS_API_KEY", goole_maps_api_key
+
     }
     kotlinOptions {
         jvmTarget = '1.8'
@@ -70,6 +69,8 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+    // google maps
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.6.0'

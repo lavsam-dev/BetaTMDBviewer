@@ -28,5 +28,9 @@
         android:id="@+id/menu_actions_item_contacts"
         android:title="@string/contacts"
         android:icon="@drawable/icon_contacts"/>
+    <item
+        android:id="@+id/menu_actions_item_google_maps"
+        android:title="@string/googlemaps"
+        android:icon="@drawable/icon_google_maps"/>
 
 </menu>

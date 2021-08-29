@@ -11,15 +11,11 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.learn.lavsam.betatmdbviewer.R
 import com.learn.lavsam.betatmdbviewer.databinding.ContactFragmentBinding
 import com.learn.lavsam.betatmdbviewer.viewmodel.ContactAppState
 import com.learn.lavsam.betatmdbviewer.viewmodel.ContactViewModel
 
-private const val ACCESS_TITLE = "Доступ к контактам"
-private const val ACCESS_MESSAGE = "Объяснение"
-private const val ACCESS_POSITIVE_BUTTON = "Предоставить доступ"
-private const val ACCESS_NEGATIVE_BUTTON = "Не надо"
-private const val ACCESS_DISMISS_BUTTON = "Закрыть"
 private const val VISIBILITY_GONE = View.GONE
 private const val VISIBILITY_VISIBLE = View.VISIBLE
 
@@ -81,12 +77,12 @@ class ContactFragment : Fragment() {
                 }
                 shouldShowRequestPermissionRationale(Manifest.permission.READ_CONTACTS) -> {
                     AlertDialog.Builder(it)
-                        .setTitle(ACCESS_TITLE)
-                        .setMessage(ACCESS_MESSAGE)
-                        .setPositiveButton(ACCESS_POSITIVE_BUTTON) { _, _ ->
+                        .setTitle(getString(R.string.access_title))
+                        .setMessage(getString(R.string.access_message))
+                        .setPositiveButton(getString(R.string.access_positive_button)) { _, _ ->
                             requestPermissionLauncher.launch(Manifest.permission.READ_CONTACTS)
                         }
-                        .setNegativeButton(ACCESS_NEGATIVE_BUTTON) { dialog, _ -> dialog.dismiss() }
+                        .setNegativeButton(getString(R.string.access_negative_button)) { dialog, _ -> dialog.dismiss() }
                         .create()
                         .show()
                 }
@@ -104,9 +100,9 @@ class ContactFragment : Fragment() {
             } else {
                 context?.let {
                     AlertDialog.Builder(it)
-                        .setTitle(ACCESS_TITLE)
-                        .setMessage(ACCESS_MESSAGE)
-                        .setNegativeButton(ACCESS_DISMISS_BUTTON) { dialog, _ -> dialog.dismiss() }
+                        .setTitle(getString(R.string.access_title))
+                        .setMessage(getString(R.string.access_message))
+                        .setNegativeButton(getString(R.string.access_negative_button)) { dialog, _ -> dialog.dismiss() }
                         .create()
                         .show()
                 }
