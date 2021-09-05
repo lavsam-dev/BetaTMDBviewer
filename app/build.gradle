@@ -25,16 +25,19 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField("String", "MY_BUILD_TYPE", "\"RELEASE\"")
+            resValue("dimen", "item_text_size_contact", "15sp")
         }
         beta {
             initWith debug
             versionNameSuffix "-beta"
             debuggable true
             buildConfigField("String", "MY_BUILD_TYPE", "\"BETA\"")
+            resValue("dimen", "item_text_size_contact", "25sp")
         }
         debug {
             versionNameSuffix '-debug'
             buildConfigField("String", "MY_BUILD_TYPE", "\"DEBUG\"")
+            resValue("dimen", "item_text_size_contact", "10sp")
         }
     }
     compileOptions {
