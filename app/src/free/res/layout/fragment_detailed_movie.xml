@@ -47,6 +47,7 @@
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/item_margin"
             android:layout_marginEnd="@dimen/item_margin"
+            android:visibility="invisible"
             android:background="@drawable/toggle_favorite"
             android:textOff=""
             android:textOn=""
