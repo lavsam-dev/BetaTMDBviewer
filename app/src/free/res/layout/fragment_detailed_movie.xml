@@ -47,6 +47,7 @@
             android:layout_gravity="end"
             android:layout_marginTop="@dimen/item_margin"
             android:layout_marginEnd="@dimen/item_margin"
+            android:visibility="invisible"
             android:background="@drawable/toggle_favorite"
             android:textOff=""
             android:textOn=""
@@ -69,12 +70,13 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/image_view_poster"
-            android:layout_width="@dimen/details_poster_width"
-            android:layout_height="@dimen/details_poster_height"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:layout_marginStart="@dimen/item_margin"
             android:layout_marginTop="@dimen/item_margin"
             android:background="@color/purple_200"
             android:scaleType="fitXY"
+            android:visibility="invisible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageViewBackgroundPoster" />
 
@@ -182,7 +184,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_view_poster"
+            app:layout_constraintTop_toBottomOf="@id/text_view_lists"
             tools:text="Cobb, a skilled thief who commits corporate espionage by infiltrating the subconscious of his targets is offered a chance to regain his old life as payment for a task considered to be impossible: 'inception', the implantation of another person's idea into a target's subconscious." />
 
         <FrameLayout

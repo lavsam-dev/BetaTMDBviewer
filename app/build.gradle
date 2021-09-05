@@ -24,6 +24,23 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField("String", "MY_BUILD_TYPE", "\"RELEASE\"")
+            resValue("dimen", "item_text_size_contact", "15sp")
+            resValue("string", "app_name", "MyTMDBViewer")
+        }
+        beta {
+            initWith debug
+            versionNameSuffix "-beta"
+            debuggable true
+            buildConfigField("String", "MY_BUILD_TYPE", "\"BETA\"")
+            resValue("dimen", "item_text_size_contact", "25sp")
+            resValue("string", "app_name", "BetaTMDBViewer")
+        }
+        debug {
+            versionNameSuffix '-debug'
+            buildConfigField("String", "MY_BUILD_TYPE", "\"DEBUG\"")
+            resValue("dimen", "item_text_size_contact", "10sp")
+            resValue("string", "app_name", "DebugTMDBViewer")
         }
     }
     compileOptions {
@@ -56,6 +73,16 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    flavorDimensions 'version'
+    productFlavors {
+        free {
+            dimension 'version'
+            versionNameSuffix '.free'
+        }
+        pro {
+            dimension 'version'
+        }
     }
 }
 
